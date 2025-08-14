@@ -42,6 +42,13 @@
   justify-items: center;
 }
 
+.question {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  margin-left: -180px;
+}
+
 .selectBtn {
   width: 300px;
   height: 50px;
@@ -50,16 +57,33 @@
   border-radius: 60px;
   box-shadow: none;
   border: none;
+  font-size: 17px;
+  margin-left: -15px;
 }
 
-.answers {
-  justify-content: center;
-  justify-items: center;
+.answer-container1 {
+  padding-top: 15px;
+  display: flex;
   align-items: center;
+  background-color: transparent;
 }
 
-.answer-container {
-  width: 100%;
+.answer-container2 {
+  margin-top: -20px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+}
+
+.answer-container3 {
+  margin-top: -20px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+}
+
+.answer-container4 {
+  margin-top: -20px;
   display: flex;
   align-items: center;
   background-color: transparent;
@@ -80,7 +104,8 @@
 
 .rocket {
   opacity: 0.9;
-  transform: translateX(90%);
+  margin-left: 20px;
+  margin-right: -42px;
 }
 
 .rocket.selcted {
@@ -92,9 +117,9 @@
 }
 
 .BtnNo {
-  transform: translateX(100%);
-  font-size: 30px;
+  font-size: 28px;
   color: #7042ea;
+  z-index: 4;
 }
 
 /* .BtnNo.selected {

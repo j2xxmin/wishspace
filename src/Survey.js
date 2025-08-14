@@ -129,35 +129,32 @@ function Survey() {
               <p className='progresslevel'>{level+1}/6</p>
             </div>
 
-            <div className='Question'>
-              <p>{quest}</p>
-            </div>
+              <p className='question'>{quest}</p>
 
-            <div className='answers'>
-              <div className='answer-container' onClick={() => setSelectedAnsw(1)}>
+              <div className='answer-container1' onClick={() => setSelectedAnsw(1)}>
                 <img src={rocket} alt="로켓 버튼" className={`rocket ${selectedAnsw === 1 ? 'selected' : ''}`} />
                 <h4 className={`BtnNo ${selectedAnsw === 1 ? 'selected' : ''}`}>1</h4>
                 <button className={`selectBtn ${selectedAnsw === 1 ? 'selected' : ''}`}>{answer1}</button>
               </div>
 
-              <div className='answer-container' onClick={() => setSelectedAnsw(2)}>
+              <div className='answer-container2' onClick={() => setSelectedAnsw(2)}>
                 <img src={rocket} alt="로켓 버튼" className={`rocket ${selectedAnsw === 2 ? 'selected' : ''}`} />
                 <h4 className={`BtnNo ${selectedAnsw === 2 ? 'selected' : ''}`}>2</h4>
                 <button className={`selectBtn ${selectedAnsw === 2 ? 'selected' : ''}`}>{answer2}</button>
               </div>
 
-              <div className='answer-container' onClick={() => setSelectedAnsw(3)}>
+              <div className='answer-container3' onClick={() => setSelectedAnsw(3)}>
                 <img src={rocket} alt="로켓 버튼" className={`rocket ${selectedAnsw === 3 ? 'selected' : ''}`} />
                 <h4 className={`BtnNo ${selectedAnsw === 3 ? 'selected' : ''}`}>3</h4>
                 <button className={`selectBtn ${selectedAnsw === 3 ? 'selected' : ''}`}>{answer3}</button>
               </div>
 
-              <div className='answer-container' onClick={() => setSelectedAnsw(4)}>
+              <div className='answer-container4' onClick={() => setSelectedAnsw(4)}>
                 <img src={rocket} alt="로켓 버튼" className={`rocket ${selectedAnsw === 4 ? 'selected' : ''}`} />
                 <h4 className={`BtnNo ${selectedAnsw === 4 ? 'selected' : ''}`}>4</h4>
                 <button className={`selectBtn ${selectedAnsw === 4 ? 'selected' : ''}`}>{answer4}</button>
               </div>
-            </div>
+      
             <button
               onClick={() => nextLevel(selectedAnsw)}
               className='nextBtn'>다음 질문</button>
