@@ -65,7 +65,7 @@
 .answer-container1 {
   position: absolute;
   left: 50%;
-  top: 22%;
+  top: 165px;
   margin-left: -190px;
   display: flex;
   align-items: center;
@@ -75,7 +75,7 @@
 .answer-container2 {
   position: absolute;
   left: 50%;
-  top: 31%;
+  top: 230px;
   margin-left: -190px;
   display: flex;
   align-items: center;
@@ -85,7 +85,7 @@
 .answer-container3 {
   position: absolute;
   left: 50%;
-  top: 40%;
+  top: 295px;
   margin-left: -190px;
   display: flex;
   align-items: center;
@@ -95,7 +95,7 @@
 .answer-container4 {
   position: relative;
   left: -4%;
-  margin-top: 285px;
+  margin-top: 265px;
   display: flex;
   align-items: center;
   background-color: transparent;
