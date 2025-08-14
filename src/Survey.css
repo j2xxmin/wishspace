@@ -1,27 +1,136 @@
-.video-container {
-  position: relative;
-  width: 100%;
-  height: 100vh; /* 화면 전체 높이 */
-  overflow: hidden;
+.screen {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
 }
 
 .background-video {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: -1; /* 뒤에 위치 */
-  transform: translate(-50%, -50%);
-  object-fit: cover; /* 화면 비율 유지하며 꽉 채우기 */
+  z-index: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .content {
-  position: relative;
-  z-index: 1;
+  position: absolute;
   color: white;
   text-align: center;
-  top: 40%;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  align-items: center;
+}
+
+.selectBtn {
+  width: 90%;
+  height: 50px;
+  margin-left: 18px;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 60px;
+  box-shadow: none;
+  border: none;
+}
+
+.answer-container {
+  width: 86%;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+}
+
+.nextBtn {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 10%;
+  background-color: #7042ea;
+  color: white;
+  font-weight: bold;
+  border: none;
+}
+
+.rocket {
+  opacity: 0.9;
+  transform: translateX(115%);
+}
+
+.rocket.selcted {
+  background-color: #7042ea;
+}
+
+.selectBtn.selected {
+  background-color: #7042ea;
+}
+
+.BtnNo {
+  transform: translateX(200%);
+  font-size: 30px;
+  color: #7042ea;
+}
+
+.BtnNo.selected {
+  color: white;
+}
+
+.progress-container {
+  transform: translateX(10%);
+  width: 86%;
+  margin-top: 10px;
+}
+
+.progresslevel {
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding: 0;
+  text-align: right;
+}
+
+.backBtn {
+  transform: translateX(-1000%);
+  margin: 10px 10px 0px 10px;
+  font-size: 40px;
+  color: white;
+  background-color: transparent;
+  border: none;
+}
+
+.endBtn {
+  width: 300px;
+    height: 55px;
+    background-color: #7042ea;
+    font-size: large;
+    color: white;
+    border-radius: 60px;
+    border: none;
+}
+
+.ending-container {
+  position: absolute;
+  color: white;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

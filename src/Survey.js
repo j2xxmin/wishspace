@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import bgVideo from "./splash_space.mp4"
 import "./Survey.css"
 import { useNavigate } from 'react-router-dom';
+import rocket from './assets/rocket.png';
+import ProgressBar from './ProgressBar';
 
 function Survey() {
   const [level, setLevel] = useState(0);
@@ -10,10 +12,12 @@ function Survey() {
   const [answer2, setAnswer2] = useState("");
   const [answer3, setAnswer3] = useState("");
   const [answer4, setAnswer4] = useState("");
+  const [selectedAnsw, setSelectedAnsw] = useState(0);
   const [count, setCount] = useState([0, 0, 0, 0]);
   const [isEnd, setIsEnd] = useState(false);
   const [max, setMax] = useState(1);
   const navigate = useNavigate();
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     switch (level) {
@@ -59,8 +63,6 @@ function Survey() {
         setAnswer3("구조를 기다리며 침착히 대기한다");
         setAnswer4("외부와 연결할 방법을 찾아본다");
         break;
-      case 6:
-        setIsEnd(true);
       default:
         setQuest("Q1. 낯선 행성에 첫 착륙! 기지에서 내린 당신은 가장 먼저 할 일은?");
         setAnswer1("지형을 파악하고 앞장선다");
@@ -70,13 +72,25 @@ function Survey() {
     }
   }, [level]);
 
-  const handleCount = (index) => {
-    setCount(prev => {
-      const newCount = [...prev];
-      newCount[index] += 1;
-      return newCount;
+  const nextLevel = (selectedAnsw) => {
+    if (!selectedAnsw) return;
+
+    setCount((prev) => {
+      const updated = [...prev];
+      updated[selectedAnsw - 1] += 1;
+      return updated;
     });
+
+    setLevel((prevLevel) => {
+      const next = prevLevel + 1;
+      if (next >= 6) {
+        setIsEnd(true);
+      }
+      return next;
+    });
+
     console.log(count);
+    setSelectedAnsw(0);
   }
 
   const getResult = () => {
@@ -91,25 +105,63 @@ function Survey() {
   }
 
   return (
-    <div>
+    <div className='screen'>
+      <video autoPlay loop muted playsInline className='background-video'>
+        <source src={bgVideo} type="video/mp4" />
+      </video>
+
+      <div className='overlay'></div>
+
       <div className='content'>
         {isEnd ? (
           <div className='ending-container'>
             <h4>테스트 종료!</h4>
             <h4>결과를 보러 가시겠습니까?</h4>
-            <button onClick={getResult}>결과 확인하기</button>
+            <button onClick={getResult}
+            className='endBtn'>결과 확인하기</button>
           </div>) : (
+
           <div className='survey-container'>
+            <button onClick={() => setLevel(prev => Math.max(prev - 1, 0))}
+              className='backBtn'>{"<"}</button>
+
+            <div className='progress-container'>
+              <ProgressBar level={level} />
+              <p className='progresslevel'>{level+1}/6</p>
+            </div>
+
             <div className='Question'>
               {quest}
             </div>
-            <div className='answer'>
-              <button onClick={() => handleCount(0)}>{answer1}</button>
-              <button onClick={() => handleCount(1)}>{answer2}</button>
-              <button onClick={() => handleCount(2)}>{answer3}</button>
-              <button onClick={() => handleCount(3)}>{answer4}</button>
+
+            <div className='answers'>
+              <div className='answer-container' onClick={() => setSelectedAnsw(1)}>
+                <img src={rocket} alt="로켓 버튼" className={`rocket ${selectedAnsw === 1 ? 'selected' : ''}`} />
+                <h4 className={`BtnNo ${selectedAnsw === 1 ? 'selected' : ''}`}>1</h4>
+                <button className={`selectBtn ${selectedAnsw === 1 ? 'selected' : ''}`}>{answer1}</button>
+              </div>
+
+              <div className='answer-container' onClick={() => setSelectedAnsw(2)}>
+                <img src={rocket} alt="로켓 버튼" className={`rocket ${selectedAnsw === 2 ? 'selected' : ''}`} />
+                <h4 className={`BtnNo ${selectedAnsw === 2 ? 'selected' : ''}`}>2</h4>
+                <button className={`selectBtn ${selectedAnsw === 2 ? 'selected' : ''}`}>{answer2}</button>
+              </div>
+
+              <div className='answer-container' onClick={() => setSelectedAnsw(3)}>
+                <img src={rocket} alt="로켓 버튼" className={`rocket ${selectedAnsw === 3 ? 'selected' : ''}`} />
+                <h4 className={`BtnNo ${selectedAnsw === 3 ? 'selected' : ''}`}>3</h4>
+                <button className={`selectBtn ${selectedAnsw === 3 ? 'selected' : ''}`}>{answer3}</button>
+              </div>
+
+              <div className='answer-container' onClick={() => setSelectedAnsw(4)}>
+                <img src={rocket} alt="로켓 버튼" className={`rocket ${selectedAnsw === 4 ? 'selected' : ''}`} />
+                <h4 className={`BtnNo ${selectedAnsw === 4 ? 'selected' : ''}`}>4</h4>
+                <button className={`selectBtn ${selectedAnsw === 4 ? 'selected' : ''}`}>{answer4}</button>
+              </div>
             </div>
-            <button onClick={() => setLevel(prev => prev + 1)}>다음 질문</button>
+            <button
+              onClick={() => nextLevel(selectedAnsw)}
+              className='nextBtn'>다음 질문</button>
           </div>)}
       </div>
     </div>
