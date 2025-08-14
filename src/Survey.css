@@ -43,8 +43,9 @@
 }
 
 .question {
+  width: 400px;
   position: absolute;
-  top: 8%;
+  top: 15%;
   left: 50%;
   margin-left: -180px;
 }
@@ -62,28 +63,39 @@
 }
 
 .answer-container1 {
-  padding-top: 15px;
+  position: absolute;
+  left: 50%;
+  padding-top: 45px;
+  margin-left: -190px;
   display: flex;
   align-items: center;
   background-color: transparent;
 }
 
 .answer-container2 {
-  margin-top: -20px;
+  position: absolute;
+  left: 50%;
+  top: 32%;
+  margin-left: -190px;
   display: flex;
   align-items: center;
   background-color: transparent;
 }
 
 .answer-container3 {
-  margin-top: -20px;
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  margin-left: -190px;
   display: flex;
   align-items: center;
   background-color: transparent;
 }
 
 .answer-container4 {
-  margin-top: -20px;
+  position: relative;
+  left: -4%;
+  margin-top: 285px;
   display: flex;
   align-items: center;
   background-color: transparent;
@@ -127,7 +139,7 @@
 } */
 
 .progress-container {
-  margin-top: 10px;
+  margin-top: 50px;
 }
 
 .progresslevel {
@@ -149,8 +161,11 @@
 }
 
 .backBtn {
+  width: 20px;
+  height: 20px;
   position: absolute;
-  left: 10px;
+  left: 15px;
+  top: 10px;
 }
 
 .ending-container {

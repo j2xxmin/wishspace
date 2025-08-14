@@ -4,6 +4,7 @@ import "./Survey.css"
 import { useNavigate } from 'react-router-dom';
 import rocket from './assets/rocket.png';
 import ProgressBar from './ProgressBar';
+import backBtn from './assets/return-button.png';
 
 function Survey() {
   const [level, setLevel] = useState(0);
@@ -121,8 +122,9 @@ function Survey() {
             className='endBtn'>결과 확인하기</button>
           </div>) : (
           <div className='survey-container'>
-            <button onClick={() => setLevel(prev => Math.max(prev - 1, 0))}
-              className='backBtn'>{"<"}</button>
+            <img onClick={() => setLevel(prev => Math.max(prev - 1, 0))}
+              src={backBtn} alt='뒤로가기'
+              className='backBtn'></img>
 
             <div className='progress-container'>
               <ProgressBar level={level} />
