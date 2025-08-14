@@ -65,7 +65,7 @@
 .answer-container1 {
   position: absolute;
   left: 50%;
-  padding-top: 45px;
+  top: 22%;
   margin-left: -190px;
   display: flex;
   align-items: center;
@@ -75,7 +75,7 @@
 .answer-container2 {
   position: absolute;
   left: 50%;
-  top: 32%;
+  top: 31%;
   margin-left: -190px;
   display: flex;
   align-items: center;
@@ -85,7 +85,7 @@
 .answer-container3 {
   position: absolute;
   left: 50%;
-  top: 42%;
+  top: 40%;
   margin-left: -190px;
   display: flex;
   align-items: center;
