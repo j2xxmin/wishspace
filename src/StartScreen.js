@@ -8,20 +8,6 @@ function StartScreen() {
   const appRef = useRef(null);
   const navigete = useNavigate();
 
-  const handleFullScreen = () => {
-    if (appRef.current) {
-      if (appRef.current.requestFullscreen) {
-        appRef.current.requestFullscreen();
-      } else if (appRef.current.webKitRequestFullscreen) {
-        appRef.current.webkitRequestFullscreen();
-      } else if (appRef.current.msRequestFullscreen) {
-        appRef.current.msRequestFullscreen();
-      }
-    }
-
-    handleStart();
-  };
-
   const handleStart = () => {
     navigete("/survey");
   }
@@ -42,7 +28,7 @@ function StartScreen() {
           당신은 우주탐사대에서 어떤 포지션이 어울릴까요?<br /><br />
           테스트하러 Go~ Go~
         </h4>
-        <button onClick={handleFullScreen}
+        <button onClick={handleStart}
           className='startButton'>
           우주탐사대 포지션 파악하러 가기
         </button>

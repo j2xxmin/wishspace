@@ -120,7 +120,6 @@ function Survey() {
             <button onClick={getResult}
             className='endBtn'>결과 확인하기</button>
           </div>) : (
-
           <div className='survey-container'>
             <button onClick={() => setLevel(prev => Math.max(prev - 1, 0))}
               className='backBtn'>{"<"}</button>
@@ -131,7 +130,7 @@ function Survey() {
             </div>
 
             <div className='Question'>
-              {quest}
+              <p>{quest}</p>
             </div>
 
             <div className='answers'>
