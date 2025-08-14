@@ -1,8 +1,10 @@
 import './App.css';
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function StartScreen() {
   const appRef = useRef(null);
+  const navigete = useNavigate();
 
   const handleFullScreen = () => {
     if (appRef.current) {
@@ -14,12 +16,20 @@ function StartScreen() {
         appRef.current.msRequestFullscreen();
       }
     }
+
+    handleStart();
   };
+
+  const handleStart = () => {
+    navigete("/survey");
+  }
 
   return (
     <div>
       <h2>설문을 시작해보세요</h2>
-      <link onClick={handleFullScreen}>시작하기</link>
+      <button onClick={handleFullScreen}>
+      전체 화면 시작
+      </button>
     </div>
   );
 }
