@@ -14,7 +14,7 @@ function Survey() {
   const [answer3, setAnswer3] = useState("");
   const [answer4, setAnswer4] = useState("");
   const [selectedAnsw, setSelectedAnsw] = useState(0);
-  const [count, setCount] = useState([0, 0, 0, 0]);
+  const [count, setCount] = useState([]);
   const [isEnd, setIsEnd] = useState(false);
   const [max, setMax] = useState(1);
   const navigate = useNavigate();
@@ -73,13 +73,17 @@ function Survey() {
     }
   }, [level]);
 
+  useEffect(() => {
+    console.log('업데이트된 count:', count);
+  }, [count]);
+
   const nextLevel = (selectedAnsw) => {
     if (!selectedAnsw) return;
 
     setCount((prev) => {
-      const updated = [...prev];
-      updated[selectedAnsw - 1] += 1;
-      return updated;
+      const updatedCount = [...prev];
+      updatedCount[level] = selectedAnsw;
+      return updatedCount;
     });
 
     setLevel((prevLevel) => {
@@ -90,20 +94,38 @@ function Survey() {
       return next;
     });
 
-    console.log(count);
     setSelectedAnsw(0);
   }
 
   const getResult = () => {
+    const counts = [0, 0, 0, 0];
+
+    for (const answer of count) {
+      if (answer == 1) {
+        counts[0]++;
+      } else if (answer == 2) {
+        counts[1]++;
+      } else if (answer == 3) {
+        counts[2]++;
+      } else {
+        counts[3]++;
+      }
+    }
+
     let maxIndex = 0;
-    for (let i = 0; i < count.length; i++) {
-      if (count[i] > count[maxIndex]) {
+    for (let i = 1; i < counts.length; i++) {
+      if (counts[i] > counts[maxIndex]) {
         maxIndex = i;
       }
-      setMax(maxIndex);
     }
+    setMax(maxIndex);
+
     navigate("/result", { state: { max: maxIndex } });
   }
+
+  const goToBack = () => {
+    setLevel((prevLevel) => prevLevel - 1);
+  };
 
   return (
     <div className='screen'>
@@ -119,44 +141,44 @@ function Survey() {
             <h4>테스트 종료!</h4>
             <h4>결과를 보러 가시겠습니까?</h4>
             <button onClick={getResult}
-            className='endBtn'>결과 확인하기</button>
+              className='endBtn'>결과 확인하기</button>
           </div>) : (
           <div className='survey-container'>
-            <img onClick={() => setLevel(prev => Math.max(prev - 1, 0))}
+            <img onClick={goToBack}
               src={backBtn} alt='뒤로가기'
               className='backBtn'></img>
 
             <div className='progress-container'>
               <ProgressBar level={level} />
-              <p className='progresslevel'>{level+1}/6</p>
+              <p className='progresslevel'>{level + 1}/6</p>
             </div>
 
-              <p className='question'>{quest}</p>
+            <p className='question'>{quest}</p>
 
-              <div className='answer-container1' onClick={() => setSelectedAnsw(1)}>
-                <img src={rocket} alt="로켓 버튼" className={`rocket ${selectedAnsw === 1 ? 'selected' : ''}`} />
-                <h4 className={`BtnNo ${selectedAnsw === 1 ? 'selected' : ''}`}>1</h4>
-                <button className={`selectBtn ${selectedAnsw === 1 ? 'selected' : ''}`}>{answer1}</button>
-              </div>
+            <div className='answer-container1' onClick={() => setSelectedAnsw(1)}>
+              <img src={rocket} alt="로켓 버튼" className={`rocket ${selectedAnsw === 1 ? 'selected' : ''}`} />
+              <h4 className={`BtnNo ${selectedAnsw === 1 ? 'selected' : ''}`}>1</h4>
+              <button className={`selectBtn ${selectedAnsw === 1 ? 'selected' : ''}`}>{answer1}</button>
+            </div>
 
-              <div className='answer-container2' onClick={() => setSelectedAnsw(2)}>
-                <img src={rocket} alt="로켓 버튼" className={`rocket ${selectedAnsw === 2 ? 'selected' : ''}`} />
-                <h4 className={`BtnNo ${selectedAnsw === 2 ? 'selected' : ''}`}>2</h4>
-                <button className={`selectBtn ${selectedAnsw === 2 ? 'selected' : ''}`}>{answer2}</button>
-              </div>
+            <div className='answer-container2' onClick={() => setSelectedAnsw(2)}>
+              <img src={rocket} alt="로켓 버튼" className={`rocket ${selectedAnsw === 2 ? 'selected' : ''}`} />
+              <h4 className={`BtnNo ${selectedAnsw === 2 ? 'selected' : ''}`}>2</h4>
+              <button className={`selectBtn ${selectedAnsw === 2 ? 'selected' : ''}`}>{answer2}</button>
+            </div>
 
-              <div className='answer-container3' onClick={() => setSelectedAnsw(3)}>
-                <img src={rocket} alt="로켓 버튼" className={`rocket ${selectedAnsw === 3 ? 'selected' : ''}`} />
-                <h4 className={`BtnNo ${selectedAnsw === 3 ? 'selected' : ''}`}>3</h4>
-                <button className={`selectBtn ${selectedAnsw === 3 ? 'selected' : ''}`}>{answer3}</button>
-              </div>
+            <div className='answer-container3' onClick={() => setSelectedAnsw(3)}>
+              <img src={rocket} alt="로켓 버튼" className={`rocket ${selectedAnsw === 3 ? 'selected' : ''}`} />
+              <h4 className={`BtnNo ${selectedAnsw === 3 ? 'selected' : ''}`}>3</h4>
+              <button className={`selectBtn ${selectedAnsw === 3 ? 'selected' : ''}`}>{answer3}</button>
+            </div>
 
-              <div className='answer-container4' onClick={() => setSelectedAnsw(4)}>
-                <img src={rocket} alt="로켓 버튼" className={`rocket ${selectedAnsw === 4 ? 'selected' : ''}`} />
-                <h4 className={`BtnNo ${selectedAnsw === 4 ? 'selected' : ''}`}>4</h4>
-                <button className={`selectBtn ${selectedAnsw === 4 ? 'selected' : ''}`}>{answer4}</button>
-              </div>
-      
+            <div className='answer-container4' onClick={() => setSelectedAnsw(4)}>
+              <img src={rocket} alt="로켓 버튼" className={`rocket ${selectedAnsw === 4 ? 'selected' : ''}`} />
+              <h4 className={`BtnNo ${selectedAnsw === 4 ? 'selected' : ''}`}>4</h4>
+              <button className={`selectBtn ${selectedAnsw === 4 ? 'selected' : ''}`}>{answer4}</button>
+            </div>
+
             <button
               onClick={() => nextLevel(selectedAnsw)}
               className='nextBtn'>다음 질문</button>

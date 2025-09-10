@@ -1,6 +1,10 @@
+.screen {
+  overflow: auto;
+}
+
 .imgScreen {
     width: 100vw;
-    height: 100vh;
-    object-fit: fill;
+    height: auto;
+    object-fit: cover;
     display: block;
 }
