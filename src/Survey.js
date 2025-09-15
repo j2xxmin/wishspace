@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import bgVideo from "./splash_space.mp4"
 import "./Survey.css"
 import { useNavigate } from 'react-router-dom';
 import rocket from './assets/rocket.png';
 import rocketWhite from './assets/rocketWhite.png'
+import rocketPurple from './assets/rocketPurple.png'
 import ProgressBar from './ProgressBar';
 import backBtn from './assets/return-button.png';
 
@@ -20,6 +21,89 @@ function Survey() {
   const [max, setMax] = useState(1);
   const navigate = useNavigate();
   const [progress, setProgress] = useState(0);
+  const rocket1 = useRef(null);
+  const rocket2 = useRef(null);
+  const rocket3 = useRef(null);
+  const rocket4 = useRef(null);
+  const [BtnNo1, setBtnNo1] = useState({});
+  const [BtnNo2, setBtnNo2] = useState({});
+  const [BtnNo3, setBtnNo3] = useState({});
+  const [BtnNo4, setBtnNo4] = useState({});
+  const [selectBtn1, setSelectBtn1] = useState({});
+  const [selectBtn2, setSelectBtn2] = useState({});
+  const [selectBtn3, setSelectBtn3] = useState({});
+  const [selectBtn4, setSelectBtn4] = useState({});
+
+  useLayoutEffect(() => {
+    const updatePosition = () => {
+      if (rocket1.current) {
+        const rect = rocket1.current.getBoundingClientRect();
+        const rect2 = rocket2.current.getBoundingClientRect();
+        const rect3 = rocket3.current.getBoundingClientRect();
+        const rect4 = rocket4.current.getBoundingClientRect();
+        
+        setBtnNo1({
+          position: 'absolute',
+          top: `${rect.top-23}px`,
+          left: `${rect.left+22}px`,
+        });
+
+        setBtnNo2({
+          position: 'absolute',
+          top: `${rect2.top-23}px`,
+          left: `${rect2.left+22}px`,
+        });
+
+        setBtnNo3({
+          position: 'absolute',
+          top: `${rect3.top-23}px`,
+          left: `${rect3.left+22}px`,
+        });
+
+        setBtnNo4({
+          position: 'absolute',
+          top: `${rect4.top-23}px`,
+          left: `${rect4.left+22}px`,
+        });
+
+        setSelectBtn1({
+          position: 'absolute',
+          top: `${rect.top+6}px`,
+          left: '50%',
+          transform: 'translateX(-50%)',
+        });
+
+        setSelectBtn2({
+          position: 'absolute',
+          top: `${rect2.top+6}px`,
+          left: '50%',
+          transform: 'translateX(-50%)',
+        });
+
+        setSelectBtn3({
+          position: 'absolute',
+          top: `${rect3.top+6}px`,
+          left: '50%',
+          transform: 'translateX(-50%)',
+        });
+
+        setSelectBtn4({
+          position: 'absolute',
+          top: `${rect4.top+6}px`,
+          left: '50%',
+          transform: 'translateX(-50%)',
+        });
+      }
+    };
+
+    updatePosition();
+    
+    // 윈도우 리사이즈 이벤트에 리스너 추가
+    window.addEventListener('resize', updatePosition);
+
+    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거 (메모리 누수 방지)
+    return () => window.removeEventListener('resize', updatePosition);
+  }, []);
 
   useEffect(() => {
     switch (level) {
@@ -158,27 +242,27 @@ function Survey() {
 
             <div className='answers-box'>
               <div className='answer-container1' onClick={() => setSelectedAnsw(1)}>
-              <img src={rocketWhite} alt="로켓 버튼" className={`rocket ${selectedAnsw === 1 ? 'selected' : ''}`} />
-              <h4 className={`BtnNo1 ${selectedAnsw === 1 ? 'selected' : ''}`}>1</h4>
-              <p className={`selectBtn1 ${selectedAnsw === 1 ? 'selected' : ''}`}>{answer1}</p>
+              <img src={selectedAnsw === 1 ? rocketPurple : rocketWhite} ref={rocket1} alt="로켓 버튼" className={`rocket1 ${selectedAnsw === 1 ? 'selected' : ''}`} />
+              <h4 className={`BtnNo1 ${selectedAnsw === 1 ? 'selected' : ''}`} style={BtnNo1}>1</h4>
+              <p className={`selectBtn1 ${selectedAnsw === 1 ? 'selected' : ''}`} style={selectBtn1}>{answer1}</p>
             </div>
 
             <div className='answer-container2' onClick={() => setSelectedAnsw(2)}>
-              <img src={rocketWhite} alt="로켓 버튼" className={`rocket ${selectedAnsw === 2 ? 'selected' : ''}`} />
-              <h4 className={`BtnNo2 ${selectedAnsw === 2 ? 'selected' : ''}`}>2</h4>
-              <p className={`selectBtn2 ${selectedAnsw === 2 ? 'selected' : ''}`}>{answer2}</p>
+              <img src={selectedAnsw === 2 ? rocketPurple : rocketWhite} ref={rocket2} alt="로켓 버튼" className={`rocket2 ${selectedAnsw === 2 ? 'selected' : ''}`} />
+              <h4 className={`BtnNo2 ${selectedAnsw === 2 ? 'selected' : ''}`} style={BtnNo2}>2</h4>
+              <p className={`selectBtn2 ${selectedAnsw === 2 ? 'selected' : ''}`} style={selectBtn2}>{answer2}</p>
             </div>
 
             <div className='answer-container3' onClick={() => setSelectedAnsw(3)}>
-              <img src={rocketWhite} alt="로켓 버튼" className={`rocket ${selectedAnsw === 3 ? 'selected' : ''}`} />
-              <h4 className={`BtnNo3 ${selectedAnsw === 3 ? 'selected' : ''}`}>3</h4>
-              <p className={`selectBtn3 ${selectedAnsw === 3 ? 'selected' : ''}`}>{answer3}</p>
+              <img src={selectedAnsw === 3 ? rocketPurple : rocketWhite} ref={rocket3} alt="로켓 버튼" className={`rocket3 ${selectedAnsw === 3 ? 'selected' : ''}`} />
+              <h4 className={`BtnNo3 ${selectedAnsw === 3 ? 'selected' : ''}`} style={BtnNo3}>3</h4>
+              <p className={`selectBtn3 ${selectedAnsw === 3 ? 'selected' : ''}`} style={selectBtn3}>{answer3}</p>
             </div>
 
             <div className='answer-container4' onClick={() => setSelectedAnsw(4)}>
-              <img src={rocketWhite} alt="로켓 버튼" className={`rocket ${selectedAnsw === 4 ? 'selected' : ''}`} />
-              <h4 className={`BtnNo4 ${selectedAnsw === 4 ? 'selected' : ''}`}>4</h4>
-              <p className={`selectBtn4 ${selectedAnsw === 4 ? 'selected' : ''}`}>{answer4}</p>
+              <img src={selectedAnsw === 4 ? rocketPurple : rocketWhite} ref={rocket4} alt="로켓 버튼" className={`rocket4 ${selectedAnsw === 4 ? 'selected' : ''}`} />
+              <h4 className={`BtnNo4 ${selectedAnsw === 4 ? 'selected' : ''}`} style={BtnNo4}>4</h4>
+              <p className={`selectBtn4 ${selectedAnsw === 4 ? 'selected' : ''}`} style={selectBtn4}>{answer4}</p>
             </div>
 
             </div>

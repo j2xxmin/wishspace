@@ -43,16 +43,83 @@
 }
 
 .question {
-  width: 400px;
+  width: 86vw;
   position: absolute;
   top: 15%;
   left: 50%;
   transform: translateX(-50%);
 }
 
-.rocket {
-  width: 80vw;
-  max-width: 500px;
+.rocket1 {
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  transform: translateX(-50%);
+  width: 350px;
+}
+
+.rocket2 {
+  position: absolute;
+  left: 50%;
+  top: 37%;
+  transform: translateX(-50%);
+  width: 350px;
+}
+
+.rocket3 {
+  position: absolute;
+  left: 50%;
+  top: 49%;
+  transform: translateX(-50%);
+  width: 350px;
+}
+
+.rocket4 {
+  position: absolute;
+  left: 50%;
+  top: 61%;
+  transform: translateX(-50%);
+  width: 350px;
+}
+
+.BtnNo1 {
+  font-size: 28px;
+  color: #7042ea;
+  z-index: 4;
+}
+
+.BtnNo1.selected {
+  color: white;
+}
+
+.BtnNo2 {
+  font-size: 28px;
+  color: #7042ea;
+  z-index: 4;
+}
+
+.BtnNo2.selected {
+  color: white;
+}
+
+.BtnNo3 {
+  font-size: 28px;
+  color: #7042ea;
+  z-index: 4;
+}
+
+.BtnNo3.selected {
+  color: white;
+}
+
+.BtnNo4 {
+  font-size: 28px;
+  color: #7042ea;
+  z-index: 4;
+}
+
+.BtnNo4.selected {
+  color: white;
 }
 
 .nextBtn {
@@ -61,114 +128,38 @@
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  height: 10%;
+  height: 25%;
   background-color: #7042ea;
   color: white;
   font-weight: bold;
   border: none;
-}
-
-.answer-container1 {
-  position: absolute;
-  left: 50%;
-  top: 25%;
-  transform: translateX(-50%);
-  margin-bottom: 10px;
-}
-
-.answer-container2 {
-  position: absolute;
-  left: 50%;
-  top: 40%;
-  transform: translateX(-50%);
-  margin-bottom: 10px;
-}
-
-.answer-container3 {
-  position: absolute;
-  left: 50%;
-  top: 55%;
-  transform: translateX(-50%);
-  margin-bottom: 10px;
-}
-
-.answer-container4 {
-  position: absolute;
-  left: 50%;
-  top: 70%;
-  transform: translateX(-50%);
-  margin-bottom: 10px;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 140px;
 }
 
 .rocket.selcted {
   background-color: #7042ea;
 }
 
-.BtnNo1 {
-  position: absolute;
-  left: 10%;
-  top: -20%;
-  transform: translateX(-50%);
-  font-size: 28px;
-  color: #7042ea;
-  z-index: 4;
-}
-
-.BtnNo2 {
-  position: absolute;
-  left: 10%;
-  top: -17%;
-  transform: translateX(-50%);
-  font-size: 28px;
-  color: #7042ea;
-  z-index: 4;
-}
-
-.BtnNo3 {
-  position: absolute;
-  left: 10%;
-  top: -15%;
-  transform: translateX(-50%);
-  font-size: 28px;
-  color: #7042ea;
-  z-index: 4;
-}
-
-.BtnNo4 {
-  position: absolute;
-  left: 10%;
-  top: -15%;
-  transform: translateX(-50%);
-  font-size: 28px;
-  color: #7042ea;
-  z-index: 4;
-}
-
-.selectBtn1 {
-  position: absolute;
-  left: 50%;
-  top: 10%;
-  transform: translateX(-50%);
-}
-
 .selectBtn2 {
   position: absolute;
   left: 50%;
-  top: 10%;
+  top: 42%;
   transform: translateX(-50%);
 }
 
 .selectBtn3 {
   position: absolute;
   left: 50%;
-  top: 10%;
+  top: 57%;
   transform: translateX(-50%);
 }
 
 .selectBtn4 {
   position: absolute;
   left: 50%;
-  top: 10%;
+  top: 72%;
   transform: translateX(-50%);
 }
 
