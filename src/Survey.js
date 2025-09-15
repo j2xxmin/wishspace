@@ -3,6 +3,7 @@ import bgVideo from "./splash_space.mp4"
 import "./Survey.css"
 import { useNavigate } from 'react-router-dom';
 import rocket from './assets/rocket.png';
+import rocketWhite from './assets/rocketWhite.png'
 import ProgressBar from './ProgressBar';
 import backBtn from './assets/return-button.png';
 
@@ -155,28 +156,31 @@ function Survey() {
 
             <p className='question'>{quest}</p>
 
-            <div className='answer-container1' onClick={() => setSelectedAnsw(1)}>
-              <img src={rocket} alt="로켓 버튼" className={`rocket ${selectedAnsw === 1 ? 'selected' : ''}`} />
-              <h4 className={`BtnNo ${selectedAnsw === 1 ? 'selected' : ''}`}>1</h4>
-              <button className={`selectBtn ${selectedAnsw === 1 ? 'selected' : ''}`}>{answer1}</button>
+            <div className='answers-box'>
+              <div className='answer-container1' onClick={() => setSelectedAnsw(1)}>
+              <img src={rocketWhite} alt="로켓 버튼" className={`rocket ${selectedAnsw === 1 ? 'selected' : ''}`} />
+              <h4 className={`BtnNo1 ${selectedAnsw === 1 ? 'selected' : ''}`}>1</h4>
+              <p className={`selectBtn1 ${selectedAnsw === 1 ? 'selected' : ''}`}>{answer1}</p>
             </div>
 
             <div className='answer-container2' onClick={() => setSelectedAnsw(2)}>
-              <img src={rocket} alt="로켓 버튼" className={`rocket ${selectedAnsw === 2 ? 'selected' : ''}`} />
-              <h4 className={`BtnNo ${selectedAnsw === 2 ? 'selected' : ''}`}>2</h4>
-              <button className={`selectBtn ${selectedAnsw === 2 ? 'selected' : ''}`}>{answer2}</button>
+              <img src={rocketWhite} alt="로켓 버튼" className={`rocket ${selectedAnsw === 2 ? 'selected' : ''}`} />
+              <h4 className={`BtnNo2 ${selectedAnsw === 2 ? 'selected' : ''}`}>2</h4>
+              <p className={`selectBtn2 ${selectedAnsw === 2 ? 'selected' : ''}`}>{answer2}</p>
             </div>
 
             <div className='answer-container3' onClick={() => setSelectedAnsw(3)}>
-              <img src={rocket} alt="로켓 버튼" className={`rocket ${selectedAnsw === 3 ? 'selected' : ''}`} />
-              <h4 className={`BtnNo ${selectedAnsw === 3 ? 'selected' : ''}`}>3</h4>
-              <button className={`selectBtn ${selectedAnsw === 3 ? 'selected' : ''}`}>{answer3}</button>
+              <img src={rocketWhite} alt="로켓 버튼" className={`rocket ${selectedAnsw === 3 ? 'selected' : ''}`} />
+              <h4 className={`BtnNo3 ${selectedAnsw === 3 ? 'selected' : ''}`}>3</h4>
+              <p className={`selectBtn3 ${selectedAnsw === 3 ? 'selected' : ''}`}>{answer3}</p>
             </div>
 
             <div className='answer-container4' onClick={() => setSelectedAnsw(4)}>
-              <img src={rocket} alt="로켓 버튼" className={`rocket ${selectedAnsw === 4 ? 'selected' : ''}`} />
-              <h4 className={`BtnNo ${selectedAnsw === 4 ? 'selected' : ''}`}>4</h4>
-              <button className={`selectBtn ${selectedAnsw === 4 ? 'selected' : ''}`}>{answer4}</button>
+              <img src={rocketWhite} alt="로켓 버튼" className={`rocket ${selectedAnsw === 4 ? 'selected' : ''}`} />
+              <h4 className={`BtnNo4 ${selectedAnsw === 4 ? 'selected' : ''}`}>4</h4>
+              <p className={`selectBtn4 ${selectedAnsw === 4 ? 'selected' : ''}`}>{answer4}</p>
+            </div>
+
             </div>
 
             <button
