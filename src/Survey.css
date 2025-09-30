@@ -142,7 +142,18 @@
   background-color: #7042ea;
 }
 
+.selectBtn1 {
+  white-space: nowrap;
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 27%;
+  transform: translateX(-50%);
+}
+
 .selectBtn2 {
+  white-space: nowrap;
+  display: inline-block;
   position: absolute;
   left: 50%;
   top: 42%;
@@ -150,6 +161,8 @@
 }
 
 .selectBtn3 {
+  white-space: nowrap;
+  display: inline-block;
   position: absolute;
   left: 50%;
   top: 57%;
@@ -157,6 +170,8 @@
 }
 
 .selectBtn4 {
+  white-space: nowrap;
+  display: inline-block;
   position: absolute;
   left: 50%;
   top: 72%;
