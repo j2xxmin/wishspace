@@ -8,3 +8,21 @@
     object-fit: cover;
     display: block;
 }
+
+.replayIcon {
+  position: absolute;
+  width: 100px;
+  height: auto;
+  right: 5%;
+  bottom: -85%;
+  z-index: 5;
+}
+
+.saveIcon {
+  position: absolute;
+  width: 140px;
+  height: auto;
+  right: 25%;
+  bottom: -85%;
+  z-index: 5;
+}
