@@ -1,5 +1,6 @@
 .screen {
   overflow: auto;
+  max-height: 2400px;
 }
 
 .imgScreen {
