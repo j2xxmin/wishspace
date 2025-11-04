@@ -20,7 +20,7 @@ function StartScreen() {
 
       <div className='overlay'></div>
 
-      <div className='content'>
+      <div className='startContent'>
         <h2>[우주 탐사대 성향 테스트]</h2>
         <h3>내 역할과 간식은 무엇일까?</h3>
         <h4 className='description'>

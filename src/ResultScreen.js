@@ -30,7 +30,7 @@ function ResultScreen() {
         }
     }, [max, navigate]);
 
-    const saveImage = () => {
+    const saveImage = async () => {
         const link = document.createElement('a');
 
         link.href = resultImage;
@@ -39,6 +39,32 @@ function ResultScreen() {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+
+        if (navigator.share) {
+            try {
+                const response = await fetch(resultImage);
+                const blob = await response.blob();
+
+                const file = new File(
+                    [blob], 
+                    'my_space_job_result.jpg',
+                    { type: blob.type }
+                    );
+
+                const shareData = {
+                    files: [file]
+                };
+
+                await navigator.share(shareData);
+            } catch (e) {
+                console.log(e);
+            }
+        } else {
+            if (!navigator.canShare) {
+            alert('이 브라우저에서는 공유 기능이 지원되지 않습니다.');
+            return;
+        }
+    }
     }
 
     const replay = () => {
